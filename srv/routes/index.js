@@ -4,6 +4,7 @@ const unirest = require("unirest");
 const apiKey = '0f91ca9d-b649-483f-bfa4-af20bd40bc32';
 
 router.get('/games', function(req, res) {
+  const games = []
   const request = unirest("GET", "https://jsonodds.com/api/odds/nfl");
   request.query({
     "oddType": "Game",
@@ -15,9 +16,10 @@ router.get('/games', function(req, res) {
   });
 
   request.end(response => {
-    if (response.error) throw new Error(response.error);
-    console.log(response);
-    res.send(response.body)
+    if (response.error) throw new Error(response.error)
+    console.log(response.body)
+    response.body.forEach(game => games.push(game))
+    res.send(games)
   });
 
 });

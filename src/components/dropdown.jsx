@@ -8,18 +8,18 @@ class Dropdown extends Component {
   render() {
     return (
       <ul className='collapsible' data-collapsible="accordion">
-        {this.props.appState.apidata.map(g => <Game key={g} gameData={g} />)}
+        {this.props.appState.apiData.map(g => <Game key={g.ID} gameData={g} />)}
       </ul>
     )
   }
 
-  toggleT = () => {
-    this.props.appState.toggleTimer()
-  }
-
-  onType = (e) => {
-    this.props.appState.setName(e.target.value)
-  }
+  // toggleT = () => {
+  //   this.props.appState.toggleTimer()
+  // }
+  //
+  // onType = (e) => {
+  //   this.props.appState.setName(e.target.value)
+  // }
 };
 
 export default Dropdown;
