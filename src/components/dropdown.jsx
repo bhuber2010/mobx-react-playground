@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import { observer } from 'mobx-react';
-import Game from './components/game';
+import Game from './game';
 
 @observer
 class Dropdown extends Component {
-  const apidata = ["Game 1", "Game 2"]
-  const games = apidata.map(game => (<Game gameData={game} />))
+
   render() {
     return (
       <ul className='collapsible' data-collapsible="accordion">
-        {games}
+        {this.props.appState.apidata.map(g => <Game key={g} gameData={g} />)}
       </ul>
     )
   }
