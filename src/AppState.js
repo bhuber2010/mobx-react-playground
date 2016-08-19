@@ -1,6 +1,5 @@
 import { observable, action } from 'mobx';
 
-const apiKey = '0f91ca9d-b649-483f-bfa4-af20bd40bc32'
 // [{ID: 1, HomeTeam: 'Test', AwayTeam: 'Test2'}]
 
 class AppState {

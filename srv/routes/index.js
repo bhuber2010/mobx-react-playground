@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const unirest = require("unirest");
-const apiKey = '0f91ca9d-b649-483f-bfa4-af20bd40bc32';
 
 router.get('/games', function(req, res) {
   const games = []
@@ -12,7 +11,7 @@ router.get('/games', function(req, res) {
   });
   request.headers({
     "cache-control": "no-cache",
-    "jsonodds-api-key": apiKey
+    "jsonodds-api-key": process.env.apiKey
   });
 
   request.end(response => {

@@ -7,6 +7,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var cors = require('cors');
 
+require('dotenv').config();
+
 var routes = require('./routes/index');
 
 var app = express();
