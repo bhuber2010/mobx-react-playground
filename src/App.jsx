@@ -1,45 +1,27 @@
 import React, { Component } from 'react';
 import { observer } from 'mobx-react';
 import DevTools from 'mobx-react-devtools';
+import Dropdown from './components/dropdown';
 
-@observer
+
 class App extends Component {
   render() {
     return (
       <div>
-        <button onClick={this.toggleT}>
-          Seconds passed: {this.props.appState.timer}
-        </button>
-        <button onClick={this.decTimer}>-</button>
-        <button onClick={this.incTimer}>+</button>
-        <button onClick={this.onReset}>Reset</button>
-        <br />
-        <input onChange={this.onType} />
-        <p>{this.props.appState.name}</p>
-        <DevTools />
+        <nav>
+          <div className="nav-wrapper orange darken-2">
+            <a href="#!" className="brand-logo center">Tenorio Bets</a>
+            <ul className="right hide-on-med-and-down">
+              <li></li>
+            </ul>
+          </div>
+          <DevTools />
+        </nav>
+        <Dropdown appState={this.props.appState} />
       </div>
-    );
+    )
   }
 
-  incTimer = () => {
-    this.props.appState.increaseTimer()
-  }
-
-  decTimer = () => {
-    this.props.appState.decreaseTimer()
-  }
-
-  toggleT = () => {
-    this.props.appState.toggleTimer()
-  }
-
-  onReset = () => {
-    this.props.appState.resetTimer()
-  }
-
-  onType = (e) => {
-    this.props.appState.setName(e.target.value)
-  }
 };
 
 export default App;
