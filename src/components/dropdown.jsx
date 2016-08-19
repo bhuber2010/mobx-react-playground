@@ -1,20 +1,15 @@
 import React, { Component } from 'react';
 import { observer } from 'mobx-react';
-import DevTools from 'mobx-react-devtools';
+import Game from './components/game';
 
 @observer
 class Dropdown extends Component {
+  const apidata = ["Game 1", "Game 2"]
+  const games = apidata.map(game => (<Game gameData={game} />))
   render() {
     return (
       <ul className='collapsible' data-collapsible="accordion">
-        <li>
-          <div className="collapsible-header indigo darken-4 white-text"><i className="material-icons">filter_drama</i>First</div>
-          <div className="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
-        </li>
-        <li>
-          <div className="collapsible-header indigo darken-4 white-text"><i className="material-icons">filter_drama</i>Second</div>
-          <div className="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
-        </li>
+        {games}
       </ul>
     )
   }
