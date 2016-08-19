@@ -22,7 +22,7 @@ router.get('/games', function(req, res) {
     if (response.error) throw new Error(response.error)
     console.log(response.body)
     response.body.forEach(game => games.push(game))
-    res.send(games)
+    res.json(games)
   });
 
 });
