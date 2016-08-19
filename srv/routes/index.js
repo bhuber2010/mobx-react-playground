@@ -2,6 +2,10 @@ const express = require('express');
 const router = express.Router();
 const unirest = require("unirest");
 
+router.get('/', function(req, res) {
+  res.json({title: "Tenorio Bets"})
+})
+
 router.get('/games', function(req, res) {
   const games = []
   const request = unirest("GET", "https://jsonodds.com/api/odds/nfl");
