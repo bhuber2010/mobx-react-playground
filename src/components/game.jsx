@@ -16,10 +16,19 @@ class Game extends Component {
     return (
       <li>
         <div className="collapsible-header flex-space-between indigo darken-4 white-text">
-          <div>{`${this.props.gameData.HomeTeam} VS ${this.props.gameData.AwayTeam}`}</div>
+          <div>{`${this.props.gameData.AwayTeam} @ ${this.props.gameData.HomeTeam}`}</div>
           <div className="">{this.gTime}</div>
         </div>
-        <div className="collapsible-body"><p>Odds: {this.props.gameData.Odds[0].PointSpreadAway}</p></div>
+        <div className="collapsible-body">
+          <ul className="collection">
+            <li className="collection-item">
+              <b>Away Team Spread:</b> {this.props.gameData.Odds[0].PointSpreadAway}
+            </li>
+            <li className="collection-item">
+              <b>Home Team Spread:</b> {this.props.gameData.Odds[0].PointSpreadHome}
+            </li>
+          </ul>
+        </div>
       </li>
     )
   }
