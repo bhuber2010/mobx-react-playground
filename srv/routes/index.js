@@ -1,21 +1,21 @@
 const express = require('express');
 const router = express.Router();
-const unirest = require("unirest");
+const unirest = require('unirest');
 
 router.get('/', function(req, res) {
-  res.json({title: "Tenorio Bets"})
+  res.json({title: 'Tenorio Bets'})
 })
 
 router.get('/games', function(req, res) {
   const games = []
-  const request = unirest("GET", "https://jsonodds.com/api/odds/nfl");
+  const request = unirest('GET', 'https://jsonodds.com/api/odds/nfl');
   request.query({
-    "oddType": "Game",
-    "SiteID": "Bookmaker"
+    'oddType': 'Game',
+    'SiteID': 'Bookmaker'
   });
   request.headers({
-    "cache-control": "no-cache",
-    "jsonodds-api-key": process.env.apiKey
+    'cache-control': 'no-cache',
+    'jsonodds-api-key': process.env.apiKey
   });
 
   request.end(response => {

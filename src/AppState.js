@@ -1,6 +1,7 @@
 import { observable, action } from 'mobx';
 
-// [{ID: 1, HomeTeam: 'Test', AwayTeam: 'Test2'}]
+const api = 'https://tenorio-bets.herokuapp.com/games'
+// const api = 'http://localhost.com:3333/games'
 
 class AppState {
   @observable apiData = []
@@ -11,20 +12,28 @@ class AppState {
 
   @action('fetch api data')
   fetchData() {
-    // $.ajax('http://localhost:3333/games').done(response => {
-    //   console.log(response);
-    // });
-
-    fetch('http://localhost:3333/games')
+    fetch(api)
     .then(response => {
       response.json()
       .then(games => {
-        games.forEach(game => {
+        var sorted = this.sortGames(games)
+        console.log(sorted)
+        sorted.forEach(game => {
           this.apiData.push(game)
         })
       })
     })
+    .catch(e => console.error(e))
 
+  }
+
+  @action('sort games')
+  sortGames(games) {
+    return games.sort((a, b) => {
+        a = new Date(a.MatchTime)
+        b = new Date(b.MatchTime)
+        return a>b ? 1 : a<b ? -1 : 0;
+    })
   }
 
 }
