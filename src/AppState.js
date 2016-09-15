@@ -1,13 +1,12 @@
 import { observable, action } from 'mobx';
 
-const api = 'https://tenorio-bets.herokuapp.com/games'
-// const api = 'http://localhost.com:3333/games'
+const api = 'http://localhost.com:3333/games'
 
 class AppState {
   @observable apiData = []
 
   constructor() {
-    this.fetchData()
+    // this.fetchData()
   }
 
   @action('fetch api data')

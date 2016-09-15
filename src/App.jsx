@@ -1,27 +1,23 @@
-import React, { Component } from 'react';
-import { observer } from 'mobx-react';
-import DevTools from 'mobx-react-devtools';
-import Dropdown from './components/dropdown';
-require('./flex.css');
+import React, { Component } from 'react'
+import { observer } from 'mobx-react'
+import { Router, Route, IndexRoute, Link, browserHistory } from 'react-router'
+import DevTools from 'mobx-react-devtools'
+import Welcome from './components/welcome'
 
-class App extends Component {
+class AppRouter extends Component {
   render() {
+    const welcomeWrapper = () => {
+      return <Welcome appState={this.props.appState} />
+    }
     return (
-      <div>
-        <nav>
-          <div className="nav-wrapper orange darken-2">
-            <a href="#!" className="brand-logo center">Tenorio Bets</a>
-            <ul className="right hide-on-med-and-down">
-              <li></li>
-            </ul>
-          </div>
-          <DevTools />
-        </nav>
-        <Dropdown appState={this.props.appState} />
-      </div>
+      <Router history={browserHistory}>
+        <Route path="/" component={welcomeWrapper}>
+          {/* <IndexRoute component={Welcome} /> */}
+        </Route>
+      </Router>
     )
   }
 
 };
 
-export default App;
+export default AppRouter;
