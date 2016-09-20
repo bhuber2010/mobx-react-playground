@@ -30,6 +30,9 @@ class Splash extends Component {
 }
 
 class Welcome extends Component {
+  constructor(props) {
+    super()
+  }
 
   componentDidMount() {
     this.refs.page.style.height = `${this.setPageHeight()}px`
@@ -50,13 +53,13 @@ class Welcome extends Component {
   }
 
   render() {
+    const cards = this.props.appState.cards
     return (
       <div>
         <Splash>
           <NavBar ref="nav"/>
           <div className="page-container" ref="page">
-            <Card />
-            <Card />
+            {cards.map(i => <Card key={i} num={i} appState={this.props.appState} />)}
           </div>
         </Splash>
         {this.props.children}

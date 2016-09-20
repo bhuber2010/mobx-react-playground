@@ -1,5 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
+var DashboardPlugin = require('webpack-dashboard/plugin');
 
 module.exports = {
   devtool: 'eval',
@@ -15,6 +16,7 @@ module.exports = {
     publicPath: '/static/'
   },
   plugins: [
+    new DashboardPlugin(),
     new webpack.HotModuleReplacementPlugin()
   ],
   resolve: {

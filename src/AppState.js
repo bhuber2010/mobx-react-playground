@@ -4,6 +4,7 @@ const api = 'http://localhost.com:3333/games'
 
 class AppState {
   @observable apiData = []
+  @observable cards = [1 , 2, 3]
 
   constructor() {
     // this.fetchData()
