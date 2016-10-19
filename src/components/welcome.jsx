@@ -3,17 +3,18 @@ import { Link } from 'react-router'
 import { observer } from 'mobx-react'
 import DevTools from 'mobx-react-devtools'
 import Card from './card'
-require('../flex.css')
+require('../flex.scss')
 require('./splash.scss')
 
 class NavBar extends Component {
   render() {
     return (
-      <nav className="transparent" ref="nav">
+      <nav className="transparent z-depth-0" ref="nav">
         <div className="nav-wrapper">
-          <Link to="/" className="brand-logo center">Random Things</Link>
-          <ul className="right hide-on-med-and-down">
-            <li></li>
+          <Link to="/" className="">Random Things</Link>
+          <ul id="nav-mobile" className="hide-on-med-and-down">
+            <li><Link to="/" className="">About</Link></li>
+            <li><Link to="/" className="">Contact</Link></li>
           </ul>
         </div>
       </nav>
@@ -25,6 +26,32 @@ class Splash extends Component {
   render() {
     return (
       <div className="splash">{this.props.children}</div>
+    )
+  }
+}
+
+class Hello extends Component {
+  render() {
+    return (
+      <div className="hello-container">
+        <div id="hello-box">
+          <h1 className="white-text">Johanna Bakes</h1>
+          <h4 className="flow-text">Every landing page needs a small description after the big bold title, that's why we added this text here. Add here all the information that can make you or your product create the first impression.</h4>
+          <a className="waves-effect waves-light pink btn">Button</a>
+        </div>
+      </div>
+    )
+  }
+}
+
+class SeeMore extends Component {
+  render() {
+    return (
+      <div id="see-more" className="white-text">
+        <div className="waves-effect waves-light">
+          <i className="fa fa-chevron-down fa-2x" aria-hidden="true"></i>
+        </div>
+      </div>
     )
   }
 }
@@ -58,10 +85,12 @@ class Welcome extends Component {
       <div>
         <Splash>
           <NavBar ref="nav"/>
-          <div className="page-container" ref="page">
-            {cards.map(i => <Card key={i} num={i} appState={this.props.appState} />)}
-          </div>
+          <Hello />
+          <SeeMore />
         </Splash>
+        <div className="page-container" ref="page">
+          {cards.map(i => <Card key={i} num={i} appState={this.props.appState} />)}
+        </div>
         {this.props.children}
       </div>
     )
